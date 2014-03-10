@@ -27,14 +27,9 @@ var SetupServer = function(hasParent) {
 if (module.parent) {
     SetupServer(true);
 } else {
-    var type = process.env.NODE_TYPE || '';
-    if (type === 'clustered') {
-        // if this far; having or not having a parent is irrelevant as when loaded by cluster it will always be a child
-        require('clusterize')(SetupServer);
-        // you can use options as {verbose: true} to get logging for spawning and death/disconnection of a worker
-        // require('clusterize')(SetupServer,{verbose: true});
-    } else {
-        SetupServer();
-    }
+    // if this far; having or not having a parent is irrelevant as when loaded by cluster it will always be a child
+    require('clusterize')(SetupServer);
+    // you can use options as {verbose: true} to get logging for spawning and death/disconnection of a worker
+    // require('clusterize')(SetupServer,{verbose: true});
 }
 ```
