@@ -9,9 +9,8 @@ npm i git+ssh://git@github.com:Icehunter/clusterize.git --save
 
 ###Usage:
 ``` javascript
-var cluster = require('cluster');
-
 var SetupServer = function(hasParent) {
+    var cluster = require('cluster');
     var express = require('express');
     var app = express();
 
