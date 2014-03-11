@@ -9,23 +9,23 @@ npm i git+ssh://git@github.com:Icehunter/clusterize.git --save
 
 ###Usage:
 ``` javascript
-var SetupServer = function(hasParent) {
+var SetupServer = function (hasParent) {
     var cluster = require('cluster');
     var express = require('express');
     var app = express();
 
-    app.get('/', function(req, res){
+    app.get('/', function (req, res) {
         res.send('hello from worker [' + cluster.worker.id + ']\'s world');
     });
 
     // if loaded in a unit test framework or submodule don't spawn on port
-    if(!hasParent){
+    if (!hasParent) {
         app.listen(process.env.PORT || 3000);
     }
-}
+};
 
 if (module.parent) {
-    SetupServer(true);
+    new SetupServer(true);
 } else {
     // if this far; having or not having a parent is irrelevant as when loaded by cluster it will always be a child
     require('clusterize')(SetupServer);
