@@ -2,7 +2,7 @@
 .DS_Store
 
 # WebStorm
-**/.idea/*
+.idea/*
 
 # NPM
-**/node_modules/*
+node_modules/*
