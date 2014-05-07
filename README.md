@@ -9,8 +9,11 @@ npm i git+ssh://git@github.com:Icehunter/clusterize.git --save
 
 ###Usage:
 ``` javascript
-var SetupServer = function (hasParent) {
-    var cluster = require('cluster');
+var SetupServer = function setupServer(hasParent) {
+    if (!(this instanceof SetupServer)) {
+        return new SetupServer(hasParent);
+    }
+
     var express = require('express');
     var app = express();
 
@@ -25,7 +28,7 @@ var SetupServer = function (hasParent) {
 };
 
 if (module.parent) {
-    new SetupServer(true);
+    SetupServer(true);
 } else {
     // if this far; having or not having a parent is irrelevant as when loaded by cluster it will always be a child
     require('clusterize')(SetupServer);
