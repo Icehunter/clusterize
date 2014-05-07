@@ -28,7 +28,7 @@ var SetupServer = function setupServer(hasParent) {
 };
 
 if (module.parent) {
-    SetupServer(true);
+    new SetupServer(true);
 } else {
     // if this far; having or not having a parent is irrelevant as when loaded by cluster it will always be a child
     require('clusterize')(SetupServer);
