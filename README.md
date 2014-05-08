@@ -4,7 +4,7 @@ Yes another 'ize' module which basically abstracts cluster into a common base fo
 
 ###Installation:
 ``` text
-npm i git+ssh://git@github.com:Icehunter/clusterize.git --save
+npm i git://github.com/icehunter/clusterize -S
 ```
 
 ###Usage:
