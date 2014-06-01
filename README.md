@@ -33,6 +33,8 @@ if (module.parent) {
     // if this far; having or not having a parent is irrelevant as when loaded by cluster it will always be a child
     require('clusterize')(SetupServer);
     // you can use options as {verbose: true} to get logging for spawning and death/disconnection of a worker
+    // you can use skipCPU: # to target a specific CPU
+    // you can use cpuLimit: # to only spin up X forks
     // require('clusterize')(SetupServer,{verbose: true});
 }
 ```
