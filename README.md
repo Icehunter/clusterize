@@ -9,6 +9,10 @@ npm i git://github.com/icehunter/clusterize -S
 
 ###Usage:
 ``` javascript
+'use strict';
+
+var cluster = require('cluster');
+
 var SetupServer = function setupServer(hasParent) {
     if (!(this instanceof SetupServer)) {
         return new SetupServer(hasParent);
@@ -29,12 +33,48 @@ var SetupServer = function setupServer(hasParent) {
 
 if (module.parent) {
     new SetupServer(true);
-} else {
+}
+else {
     // if this far; having or not having a parent is irrelevant as when loaded by cluster it will always be a child
-    require('clusterize')(SetupServer);
-    // you can use options as {verbose: true} to get logging for spawning and death/disconnection of a worker
-    // you can use skipCPU: # to target a specific CPU
-    // you can use cpuLimit: # to only spin up X forks
-    // require('clusterize')(SetupServer,{verbose: true});
+    var options = {
+        cpuLimit: process.env.NODE_CPULIMIT || 0,
+        skipCPU: process.env.NODE_SKIPCPU || 0
+    };
+    require('../lib/clusterize')(SetupServer, options, {
+        forking: function (e) {
+            // message: 'Forking on CPU [' + cpuNumber + ']',
+            // cpu: cpu,
+            // cpuNumber: cpuNumber
+            console.log(e);
+        },
+        timedout: function (e) {
+            // message: 'Something must be wrong with the connection.',
+            // worker: worker
+            console.log(e);
+        },
+        listening: function (e) {
+            // message: 'A worker is now connected to [' + address.address + ':' + address.port + '].',
+            // worker: worker,
+            // address: address
+            console.log(e);
+        },
+        online: function (e) {
+            // message: 'Worker responded after it was forked.',
+            // worker: worker
+            console.log(e);
+        },
+        disconnect: function (e) {
+            // message: 'Worker #[' + worker.id + '] has disconnected.',
+            // worker: worker
+            console.log(e);
+        },
+        exit: function (e) {
+            // message: 'Worker [' + worker.process.pid + '] died [(' + signal || code + ')]. Restarting.',
+            // worker: worker,
+            // code: code,
+            // signal: signal
+            console.log(e);
+        }
+    });
 }
 ```
