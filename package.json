@@ -20,9 +20,6 @@
     },
     "homepage": "https://github.com/Icehunter/clusterize",
     "private": true,
-    "dependencies": {
-        "underscore": "^1.6.0"
-    },
     "devDependencies": {
         "blanket": "^1.1.6",
         "grunt": "^0.4.5",

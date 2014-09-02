@@ -1,6 +1,6 @@
 ### Current
 ***
-*
+* Use worker limit rather than cpu limit. Defaults to CPU count if not set.
 
 ### 0.2.0
 ***

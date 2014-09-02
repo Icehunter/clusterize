@@ -37,14 +37,12 @@ if (module.parent) {
 else {
     // if this far; having or not having a parent is irrelevant as when loaded by cluster it will always be a child
     var options = {
-        cpuLimit: process.env.NODE_CPULIMIT || 0,
-        skipCPU: process.env.NODE_SKIPCPU || 0
+        workerLimit: process.env.NODE_WORKER_LIMIT
     };
     require('../lib/clusterize')(SetupServer, options, {
         forking: function (e) {
-            // message: 'Forking on CPU [' + cpuNumber + ']',
-            // cpu: cpu,
-            // cpuNumber: cpuNumber
+            // message: 'Forking on Worker [#' + workerNumber + ']',
+            // workerNumber: workerNumber
             console.log(e);
         },
         timedout: function (e) {
