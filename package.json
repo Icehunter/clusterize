@@ -1,25 +1,12 @@
 {
     "name": "clusterize",
-    "version": "0.2.0",
-    "description": "nodejs cluster simple abstraction",
-    "main": "./lib/clusterize.js",
-    "scripts": {
-        "test": "grunt test"
+    "version": "0.2.1",
+    "description": "Yes another 'ize' module which basically abstracts cluster into a common base for all my projects.",
+    "main": "index.js",
+    "directories": {
+        "test": "test"
     },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Icehunter/clusterize.git"
-    },
-    "keywords": [
-        "cluster"
-    ],
-    "author": "Ryan Wilson",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/Icehunter/clusterize/issues"
-    },
-    "homepage": "https://github.com/Icehunter/clusterize",
-    "private": true,
+    "dependencies": {},
     "devDependencies": {
         "blanket": "^1.1.6",
         "grunt": "^0.4.5",
@@ -34,5 +21,21 @@
         "mocha": "^1.20.1",
         "should": "^4.0.4",
         "sinon": "^1.10.2"
-    }
+    },
+    "scripts": {
+        "test": "grunt test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Icehunter/clusterize.git"
+    },
+    "keywords": [
+        "cluster"
+    ],
+    "author": "Ryan Wilson <syndicated.life@gmail.com> (http://syndicatedlife.com/)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Icehunter/clusterize/issues"
+    },
+    "homepage": "https://github.com/Icehunter/clusterize"
 }
