@@ -6,3 +6,4 @@
 
 # NPM
 node_modules/*
+test/*
